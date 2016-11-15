@@ -21,7 +21,7 @@ cat << EOF > /etc/puppet/puppet.conf
 
 [master]
     node_terminus = exec
-    external_nodes = /opt/puppet-enc/enc.rb
+    external_nodes = /opt/nodeclassifier/enc.rb
     dns_alt_names = puppet,puppetmaster,puppetmaster.localdomain
     autosign = true
     storeconfigs = true

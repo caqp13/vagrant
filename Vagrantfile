@@ -61,15 +61,15 @@ Vagrant.configure(2) do |config|
 
       # If the node we're configuring is the puppet master (v1-pup01) then we need to mount a couple of special bits from the host
       if node_config[:name] == 'puppetmaster'
-        node.vm.synced_folder './puppetlabs', '/etc/puppet/environments/prod',
+        node.vm.synced_folder '../puppetlabs', '/etc/puppet/environments/prod',
           owner:  'puppet', group: 'puppet'
-        node.vm.synced_folder './puppetlabs', '/etc/puppet/environments/qa',
+        node.vm.synced_folder '../puppetlabs', '/etc/puppet/environments/qa',
           owner:  'puppet', group: 'puppet'
-        node.vm.synced_folder './puppet-enc', '/opt/puppet-enc',
+        node.vm.synced_folder '../misc/nodeclassifier/', '/opt/nodeclassifier',
           owner:  'puppet', group: 'puppet'
         node.vm.synced_folder './keys', '/var/lib/puppet/keys',
           owner:  'puppet', group: 'puppet'
-        node.vm.synced_folder './puppetlabs', '/etc/puppet/environments/production',
+        node.vm.synced_folder '../puppetlabs', '/etc/puppet/environments/production',
           owner:  'puppet', group: 'puppet'
 
 
