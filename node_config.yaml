@@ -1,0 +1,13 @@
+---
+- :name: puppetmaster
+  :basebox: centos68
+  :bootstrap: centos68_puppetmaster.sh
+  :aliases: 
+    - puppet
+    - puppetmaster.localdomain
+    - puppetca.localdomain
+
+- :name: v1-tes01
+  :basebox: centos68
+  :bootstrap: centos68.sh
+
