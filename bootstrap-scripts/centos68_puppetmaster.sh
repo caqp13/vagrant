@@ -1,10 +1,10 @@
 #!/bin/bash
 
-
+rpm -i https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -i http://yum.puppetlabs.com/puppetlabs-release-el-6.noarch.rpm
 yum install -y puppet puppet-server
 yum install -y puppetdb-terminus puppetdb
-
+yum install -y httpd
 
 
 
@@ -97,3 +97,19 @@ echo "search localdomain" > /etc/resolv.conf
 echo "nameserver 10.0.2.3" >> /etc/resolv.conf
 
 
+#apache config
+cat << EOF > /etc/httpd/conf.d/repo.conf
+
+Alias "/repo/" "/repo/"
+
+<Directory "/repo/">
+  Options Indexes FollowSymLinks MultiViews 
+  AllowOverRide None
+  Order Allow,Deny
+  Allow from all
+</Directory>
+
+EOF
+
+chkconfig httpd on
+service httpd start

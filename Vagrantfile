@@ -71,15 +71,21 @@ Vagrant.configure(2) do |config|
           owner:  'puppet', group: 'puppet'
         node.vm.synced_folder '../puppetlabs', '/etc/puppet/environments/production',
           owner:  'puppet', group: 'puppet'
+        node.vm.synced_folder '../repo', '/repo',
+          owner:  'root', group: 'root', mode: '0775'
 
 
       end
+      node.vm.synced_folder '../packages', '/packages',
+        owner:  'root', group: 'root'
 
 
       # We do not need the /vagrant folder mounted and it does in fact cause problems on Solaris hosts (https://github.com/mitchellh/vagrant/issues/7264)
       node.vm.synced_folder ".", "/vagrant", disabled: true
 
-      node.ssh.private_key_path = "~/.ssh/id_rsa"
+
+#      node.ssh.private_key_path = "~/.ssh/id_rsa"
+      node.ssh.private_key_path = "./certs/id_rsa"
 
 
     end

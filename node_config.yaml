@@ -11,3 +11,7 @@
   :basebox: centos68
   :bootstrap: centos68.sh
 
+- :name: v1-mqs01
+  :basebox: rhel5.9 
+  :bootstrap: rhel5.9_mq.sh
+
